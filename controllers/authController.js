@@ -12,7 +12,7 @@ export const registrar = async (req, res) => {
     // Validação básica
     if (!username || !password) {
       return res.status(400).json({
-        message: "Username e password são obrigatórios",
+        message: "Campos username e password são obrigatórios",
       });
     }
 
@@ -20,7 +20,7 @@ export const registrar = async (req, res) => {
     const usuarioExistente = await Usuario.findOne({ where: { username } });
     if (usuarioExistente) {
       return res.status(400).json({
-        message: "Usuário já existe",
+        message: "Este username já está em uso",
       });
     }
 

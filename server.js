@@ -43,8 +43,8 @@ const iniciarServidor = async () => {
     // Sincroniza os modelos com o banco (cria tabelas se não existirem)
     // force: false - não apaga dados existentes
     // alter: true - atualiza estrutura das tabelas
-    await db.sync({ force: false, alter: true });
-    console.log('✅ Modelos sincronizados com o banco de dados!');
+    // await db.sync({ force: false, alter: true });
+    // console.log('✅ Modelos sincronizados com o banco de dados!');
 
     // Inicia o servidor
     server.listen(PORT, () => {

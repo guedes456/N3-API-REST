@@ -118,6 +118,36 @@ export const buscarPrestadoresPorCategoria = async (req, res) => {
   }
 };
 
+// READ - Buscar prestadores por serviço (REQUISITO DO TRABALHO)
+export const buscarPrestadoresPorServico = async (req, res) => {
+  try {
+    const { id_servico } = req.params;
+
+    const prestadores = await Prestador.findAll({
+      include: [
+        {
+          model: Servico,
+          as: "servicos",
+          where: { id_servico },
+        },
+      ],
+    });
+
+    if (prestadores.length === 0) {
+      return res.status(404).json({
+        message: "Nenhum prestador encontrado para este serviço",
+      });
+    }
+
+    res.json(prestadores);
+  } catch (error) {
+    res.status(500).json({
+      message: "Erro ao buscar prestadores por serviço",
+      error: error.message,
+    });
+  }
+};
+
 // UPDATE - Atualizar prestador
 export const atualizarPrestador = async (req, res) => {
   try {
@@ -171,6 +201,15 @@ export const deletarPrestador = async (req, res) => {
 
     res.json({ message: "Prestador deletado com sucesso" });
   } catch (error) {
+    // Erro de serviços vinculados ao prestador
+    if (
+      error.name === "SequelizeForeignKeyConstraintError" ||error.original?.errno === 1451 ||
+      error.parent?.errno === 1451
+    ) {
+      return res.status(400).json({
+        message: "Não é possível deletar o prestador pois existem serviços vinculados a ele.",
+      });
+    }
     res.status(500).json({
       message: "Erro ao deletar prestador",
       error: error.message,

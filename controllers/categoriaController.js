@@ -5,6 +5,9 @@ import Prestador from "../models/prestador_model.js";
 export const criarCategoria = async (req, res) => {
   try {
     const { nome_categoria } = req.body;
+    if (!nome_categoria) {
+      return res.status(400).json({ message: "O campo 'nome_categoria' é obrigatório." });
+    }
 
     const categoria = await Categoria.create({ nome_categoria });
 
@@ -110,6 +113,15 @@ export const deletarCategoria = async (req, res) => {
 
     res.json({ message: "Categoria deletada com sucesso" });
   } catch (error) {
+    // Erro de prestadores vinculados à categoria
+    if (
+      error.name === "SequelizeForeignKeyConstraintError" ||error.original?.errno === 1451 ||
+      error.parent?.errno === 1451
+    ) {
+      return res.status(400).json({
+        message: "Não é possível deletar a categoria pois existem prestadores vinculados a ela.",
+      });
+    }
     res.status(500).json({
       message: "Erro ao deletar categoria",
       error: error.message,

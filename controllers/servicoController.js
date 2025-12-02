@@ -5,7 +5,10 @@ import Categoria from "../models/categoria_model.js";
 // CREATE - Criar serviço
 export const criarServico = async (req, res) => {
   try {
-    const { nome_servico, codigo_prestador, vlr_servico } = req.body;
+    const { nome_servico, codigo_prestador } = req.body;
+    if (!nome_servico || !codigo_prestador) {
+      return res.status(400).json({ message: "Os campos 'nome_servico' e 'codigo_prestador' são obrigatórios." });
+    }
 
     // Verifica se o prestador existe
     const prestador = await Prestador.findByPk(codigo_prestador);
@@ -16,7 +19,6 @@ export const criarServico = async (req, res) => {
     const servico = await Servico.create({
       nome_servico,
       codigo_prestador,
-      vlr_servico: vlr_servico || 80.0, // Valor padrão R$ 80,00
     });
 
     // Retorna serviço com prestador para calcular vlr_final
