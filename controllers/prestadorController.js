@@ -6,7 +6,9 @@ import Servico from "../models/servico_model.js";
 export const criarPrestador = async (req, res) => {
   try {
     const { nome_prestador, tempo_experiencia, id_categoria } = req.body;
-
+    if (!nome_prestador || !tempo_experiencia || !id_categoria) {
+      return res.status(400).json({ message: "nome_prestador, tempo_experiencia e id_categoria são obrigatórios" });
+    }
     // Verifica se a categoria existe
     const categoria = await Categoria.findByPk(id_categoria);
     if (!categoria) {
