@@ -11,7 +11,7 @@
     "setup:dev": "node setup-database.js && npm run dev"
   },
   "keywords": ["api", "jwt", "sequelize", "orm"],
-  "author": "",
+  "author": "Paulo e Gustavo",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';
+import db from '../config/database.js';
 import bcrypt from 'bcryptjs';
 
 // Modelo de Usuário para autenticação JWT
-const Usuario = sequelize.define('Usuario', {
+const Usuario = db.define('Usuario', {
   id_usuario: {
     type: DataTypes.INTEGER,
     primaryKey: true,
