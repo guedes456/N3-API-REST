@@ -22,7 +22,7 @@ INSERT INTO categorias (id_categoria, nome_categoria) VALUES
 -- Inserir Prestadores
 INSERT INTO prestadores (codigo_prestador, nome_prestador, tempo_experiencia, id_categoria) VALUES
 -- Carpintaria
-(1, 'João Silva', 3, 1),          -- 3 anos = +30%
+(1, 'Joao Silva', 3, 1),          -- 3 anos = +30%
 (2, 'Pedro Alves', 2, 1),         -- 2 anos = 0%
 (3, 'Lucas Martins', 6, 1),       -- 6 anos = +75%
 
@@ -32,7 +32,7 @@ INSERT INTO prestadores (codigo_prestador, nome_prestador, tempo_experiencia, id
 (6, 'Carlos Eduardo', 8, 2),      -- 8 anos = +75%
 
 -- Encanador
-(7, 'José Oliveira', 3, 3),       -- 3 anos = +30%
+(7, 'Jose Oliveira', 3, 3),       -- 3 anos = +30%
 (8, 'Roberto Lima', 7, 3),        -- 7 anos = +75%
 
 -- Pintor
@@ -44,26 +44,26 @@ INSERT INTO prestadores (codigo_prestador, nome_prestador, tempo_experiencia, id
 (12, 'Marcos Pereira', 6, 5);     -- 6 anos = +75%
 
 -- Inserir Servicos
--- Nota: vlr_servico padrão é R$ 80,00
+-- Nota: vlr_servico padrao e R$ 80,00
 -- O valor final será calculado automaticamente pela API
 INSERT INTO servicos (id_servico, nome_servico, vlr_servico, codigo_prestador) VALUES
 -- Servicos de Carpintaria
-(1, 'Instalacão de Porta', 80.00, 1),
-(2, 'Fabricacão de Móvel Planejado', 80.00, 1),
+(1, 'Instalacao de Porta', 80.00, 1),
+(2, 'Fabricacao de Móvel Planejado', 80.00, 1),
 (3, 'Reparo em Janela', 80.00, 2),
-(4, 'Construcão de Deck', 80.00, 3),
+(4, 'Construcao de Deck', 80.00, 3),
 
 -- Servicos de Eletricista
-(5, 'Instalacão Elétrica Residencial', 80.00, 4),
-(6, 'Manutencão de Quadro Elétrico', 80.00, 4),
-(7, 'Instalacão de Ar Condicionado', 80.00, 5),
-(8, 'Projeto Elétrico Industrial', 80.00, 6),
+(5, 'Instalacao Eletrica Residencial', 80.00, 4),
+(6, 'Manutencao de Quadro Eletrico', 80.00, 4),
+(7, 'Instalacao de Ar Condicionado', 80.00, 5),
+(8, 'Projeto Eletrico Industrial', 80.00, 6),
 
 -- Servicos de Encanador
 (9, 'Reparo de Vazamento', 80.00, 7),
-(10, 'Instalacão de Sistema Hidráulico', 80.00, 7),
+(10, 'Instalacao de Sistema Hidráulico', 80.00, 7),
 (11, 'Desentupimento', 80.00, 8),
-(12, 'Instalacão de Aquecedor', 80.00, 8),
+(12, 'Instalacao de Aquecedor', 80.00, 8),
 
 -- Servicos de Pintor
 (13, 'Pintura Residencial', 80.00, 9),
@@ -71,6 +71,6 @@ INSERT INTO servicos (id_servico, nome_servico, vlr_servico, codigo_prestador) V
 (15, 'Textura e Grafiato', 80.00, 10),
 
 -- Servicos de Pedreiro
-(16, 'Construcão de Muro', 80.00, 11),
+(16, 'Construcao de Muro', 80.00, 11),
 (17, 'Assentamento de Piso', 80.00, 11),
 (18, 'Reforma Estrutural', 80.00, 12);
