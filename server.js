@@ -8,6 +8,7 @@ import authRoutes from './routes/authRoutes.js';
 import categoriaRoutes from './routes/categoriaRoutes.js';
 import prestadorRoutes from './routes/prestadorRoutes.js';
 import servicoRoutes from './routes/servicoRoutes.js';
+import relatoriosRoutes from './routes/relatoriosRoutes.js';
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ server.use('/api/auth', authRoutes);
 server.use('/api/categorias', categoriaRoutes);
 server.use('/api/prestadores', prestadorRoutes);
 server.use('/api/servicos', servicoRoutes);
+server.use('/api/relatorios', relatoriosRoutes);
 
 // Middleware de erro 404
 server.use((req, res) => {
